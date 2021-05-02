@@ -48,10 +48,10 @@ const comparatorSuccessCode = `*, START => *, DEC, >
 *, ACCEPT => *, *, >
 ., CHECK => *, FAIL,
 5,5,.,.
-START`
+START`;
 
 const comparatorSuccess = Turtal.parse(comparatorSuccessCode);
-Turtal.run(comparatorSuccess, console.log)
+Turtal.run(comparatorSuccess)
 .then(() => {
     console.log('Comparator 5,5: Values are equal');
 })

@@ -33,7 +33,7 @@ This exposes two methods, `parse` and `run`:
     - `state` is the string of the current program state.
     - `index` is the current position about to be executed on the tape. This is 0-based; if the index would move into the negative, instead the entire tape is shifted 1 space to the right and a `'.'` is padded on the left, with the index remaining at `0`.
 
-**Note:** If the program does not halt, there is no timeout to forcibly halt it, so be careful when writing your TurTaL programs not to introduce infinite execution.
+**Note:** If the program does not halt, there is no timeout to forcibly halt it, so be careful when writing your TurTaL programs not to introduce infinite execution. As the interpreter is Promise-based, this shouldn't lock up your entire Node script, but the Promise may never settle, and any callback passed will be called infinitely many times.
 
 ### **=Basic Structure=**
 
