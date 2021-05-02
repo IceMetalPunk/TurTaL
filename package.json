@@ -2,7 +2,6 @@
   "name": "turtal",
   "version": "1.0.0",
   "description": "The TurTaL language (pronounced like \"turtle\") is an esoteric programming language based loosely on Alan Turing's original Turing machine description, with a couple of bits of syntactic sugar thrown in to reduce repetetive typing.",
-  "main": "examples.js",
   "type": "module",
   "scripts": {
     "start": "node ./examples.js"

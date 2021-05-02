@@ -1,4 +1,4 @@
-import Turtal from "./turtal.js";
+import Turtal from "./index.js";
 
 /* This implements the example TurTaL programs mentioned in the README and outputs their results. */
 
