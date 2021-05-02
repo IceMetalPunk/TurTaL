@@ -51,7 +51,7 @@ const comparatorSuccessCode = `*, START => *, DEC, >
 START`
 
 const comparatorSuccess = Turtal.parse(comparatorSuccessCode);
-Turtal.run(comparatorSuccess)
+Turtal.run(comparatorSuccess, console.log)
 .then(() => {
     console.log('Comparator 5,5: Values are equal');
 })

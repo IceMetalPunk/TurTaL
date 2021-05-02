@@ -1,4 +1,4 @@
-# TurTaL [/ˈtɝtəl/]
+# TurTaL /ˈtɝtəl/
 ## **TUR**ing **TA**pe **L**anguage
 
 The TurTaL language (pronounced like "turtle") is an esoteric programming language based loosely on Alan Turing's original Turing machine description, with a couple of bits of syntactic sugar thrown in to reduce repetetive typing.
@@ -17,6 +17,23 @@ The following terms are used throughout this document:
 | RHS | The Right-Hand Side of a rule (the triple) |
 
 Note that this document also refers to the program "throwing an error", which is a phrase used for generality. In the JavaScript TurTaL interpreter library, the interpreter returns a promise, so rather than "throwing an error", it will actually just reject the promise.
+
+### **=NodeJS TurTaL Library=**
+
+The NodeJS TurTaL library can be installed via a simple `npm install turtal` command. You can import the package like so:
+
+`import Turtal from 'turtal';`
+
+This exposes two methods, `parse` and `run`:
+
+- `Turtal.parse(code_string)` will parse the given TurTaL code string and return a runnable TurTaL program.
+- `Turtal.run(program[, callback])` will execute the given parsed TurTaL program and return a Promise which either resolves with the final tape array of the program, or rejects with any program errors.
+- If the optional callback argument is passed to `run`, it should be a function with the signature `callback(tape, state, index)`. This will be called once on program execution and then once after each read/write/move iteration.
+    - `tape` is the full array containing the current program tape.
+    - `state` is the string of the current program state.
+    - `index` is the current position about to be executed on the tape. This is 0-based; if the index would move into the negative, instead the entire tape is shifted 1 space to the right and a `'.'` is padded on the left, with the index remaining at `0`.
+
+**Note:** If the program does not halt, there is no timeout to forcibly halt it, so be careful when writing your TurTaL programs not to introduce infinite execution.
 
 ### **=Basic Structure=**
 

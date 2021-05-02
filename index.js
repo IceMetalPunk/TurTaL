@@ -28,13 +28,16 @@ class Turtal {
             mappings: new Map()
         });
     }
-    run(program, callback = (() => { })) {
+    run(program, callback = (() => { }), started = false) {
         while (program.index < 0) {
             program.tape.unshift('.');
             ++program.index;
         }
         while (program.index >= program.tape.length) {
             program.tape.push('.');
+        }
+        if (!started) {
+            callback(program.tape, program.state, program.index);
         }
         const symbol = program.tape[program.index];
         let ruleText = `${symbol},${program.state}`;
@@ -76,7 +79,7 @@ class Turtal {
         }
         program.state = (rule[1] === '*') ? program.state : rule[1];
         program.index += (rule[2] === '>') ? 1 : (rule[2] === '<' ? -1 : 0);
-        return Promise.resolve(callback(program)).then(() => this.run(program, callback));
+        return Promise.resolve(callback(program.tape, program.state, program.index)).then(() => this.run(program, callback, true));
     }
 }
 
