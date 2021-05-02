@@ -13,8 +13,8 @@ The following terms are used throughout this document:
 | Tape | An array of symbols |
 | State | A string indicating the current state of the program |
 | Rule | A mapping of (symbol,state) pairs to (symbol,state,direction) triples |
-| RHS | The Right-Hand Side of a rule (the pair) |
-| LHS | The Left-Hand Side of a rule (the triple) |
+| LHS | The Left-Hand Side of a rule (the pair) |
+| RHS | The Right-Hand Side of a rule (the triple) |
 
 Note that this document also refers to the program "throwing an error", which is a phrase used for generality. In the JavaScript TurTaL interpreter library, the interpreter returns a promise, so rather than "throwing an error", it will actually just reject the promise.
 
